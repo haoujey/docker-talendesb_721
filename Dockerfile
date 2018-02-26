@@ -25,6 +25,7 @@ RUN unzip /opt/TOS_ESB-20170623_1246-V6.4.1.zip -d /opt/TOS_ESB-20170623_1246-V6
 	chmod 777 /opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin/trun
 
 VOLUME ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/deploy"]
-EXPOSE 8040/tcp
 
-CMD ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin/trun"]
+EXPOSE 1099 8040 8101 8181 44444
+
+CMD ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin/start"]
