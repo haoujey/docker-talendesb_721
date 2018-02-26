@@ -19,7 +19,10 @@ RUN curl -sSo /opt/TOS_ESB-20170623_1246-V6.4.1.zip https://download-mirror2.tal
 
 # Install Talend Open Studio for ESB
 
-RUN unzip /opt/TOS_ESB-20170623_1246-V6.4.1.zip -d /opt && \
+RUN unzip /opt/TOS_ESB-20170623_1246-V6.4.1.zip -d /opt/TOS_ESB-20170623_1246-V6.4.1 && \
 	rm /opt/TOS_ESB-20170623_1246-V6.4.1.zip && \
-	mv /opt/TOS_ESB-20170623_1246-V6.4.1 /opt/tos_esb && \
-	chmod +x /opt/tos_esb/TOS_ESB-linux-gtk-x86
+	chmod 777 /opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin/trun
+
+EXPOSE 8040/tcp
+
+CMD ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin/trun"]
