@@ -1,3 +1,4 @@
+
 FROM kaixhin/vnc
 
 RUN apt-get -y update && \
@@ -23,6 +24,7 @@ RUN unzip /opt/TOS_ESB-20170623_1246-V6.4.1.zip -d /opt/TOS_ESB-20170623_1246-V6
 	rm /opt/TOS_ESB-20170623_1246-V6.4.1.zip && \
 	chmod 777 /opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin/trun
 
+VOLUME ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/deploy"]
 EXPOSE 8040/tcp
 
 CMD ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin/trun"]
