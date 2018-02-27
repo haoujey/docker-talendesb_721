@@ -27,8 +27,8 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip &
     unzip -jo -d "${JAVA_HOME}/jre/lib/security" "jce_policy-${JAVA_VERSION}.zip" && \
     rm "${JAVA_HOME}/jre/lib/security/README.txt" && \
     apk del build-dependencies && \
-    rm "/tmp/"*
-
+    rm "/tmp/"*  && \
+    mkdir /opt
 
 
 # Download Talend Open Studio for ESB
