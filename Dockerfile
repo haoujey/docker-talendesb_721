@@ -28,8 +28,8 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip &
     rm "${JAVA_HOME}/jre/lib/security/README.txt" && \
     apk del build-dependencies && \
     rm "/tmp/"*  && \
-    mkdir /opt
-
+    mkdir /opt   && \
+    mkdir /opt/TOS_ESB-20170623_1246-V6.4.1
 
 # Download Talend Open Studio for ESB
 RUN curl -sSo /opt/TOS_ESB-20170623_1246-V6.4.1.zip https://download-mirror2.talend.com/esb/release/V6.4.1/TOS_ESB-20170623_1246-V6.4.1.zip > /dev/null
