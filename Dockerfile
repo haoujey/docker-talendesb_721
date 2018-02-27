@@ -1,4 +1,5 @@
-FROM frolvlad/alpine-glibc:alpine-3.7
+FROM alpine:latest
+
 LABEL maintainer haoujey
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -8,6 +9,8 @@ ENV JAVA_VERSION=8 \
     JAVA_BUILD=12 \
     JAVA_PATH=2f38c3b165be4555a1fa6e98c45e0808 \
     JAVA_HOME="/usr/lib/jvm/default-jvm"
+
+RUN apk add --update curl && rm -rf /var/cache/apk/*
 
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
     cd "/tmp" && \
@@ -28,8 +31,6 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip &
 
 
 
-RUN set -x && apt-get update && apt-get install
-
 # Download Talend Open Studio for ESB
 RUN curl -sSo /opt/TOS_ESB-20170623_1246-V6.4.1.zip https://download-mirror2.talend.com/esb/release/V6.4.1/TOS_ESB-20170623_1246-V6.4.1.zip > /dev/null
 
@@ -44,3 +45,5 @@ RUN unzip /opt/TOS_ESB-20170623_1246-V6.4.1.zip -d /opt/TOS_ESB-20170623_1246-V6
 VOLUME ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/deploy"]
 
 EXPOSE 1099 8040/tcp 8101 8181 44444
+
+ENTRYPOINT ["/opt/TOS_ESB-20170623_1246-V6.4.1/Runtime_ESBSE/container/bin"]
