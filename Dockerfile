@@ -24,8 +24,7 @@ RUN curl -sSo /opt/TOS_ESB-20180411_1414-V7.0.1.zip https://download-mirror2.tal
 
 RUN unzip /opt/TOS_ESB-20180411_1414-V7.0.1.zip -d TOS_ESB && \
 	rm /opt/TOS_ESB-20180411_1414-V7.0.1.zip && \
-	rm -rf /opt/TOS_ESB/Studio && \
-	chmod 777 /opt/TOS_ESB/Runtime_ESBSE/container/bin/*
+	rm -rf /opt/TOS_ESB/Studio 
 
 VOLUME ["/opt/TOS_ESB/Runtime_ESBSE/container/deploy"]
 
