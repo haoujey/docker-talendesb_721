@@ -18,12 +18,12 @@ RUN apt-add-repository -y ppa:webupd8team/java && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Download Talend Open Studio for ESB
-RUN curl -sSo /opt/TOS_ESB-20180411_1414-V7.0.1.zip https://download-mirror2.talend.com/esb/release/V7.0.1/TOS_ESB-20180411_1414-V7.0.1.zip > /dev/null
+RUN curl -sSo /opt/TOS_ESB-20181026_1147-V7.1.1.zip https://download-mirror2.talend.com/esb/release/V7.1.1/TOS_ESB-20181026_1147-V7.1.1.zip > /dev/null
 
 # Install Talend Open Studio for ESB
 
-RUN unzip /opt/TOS_ESB-20180411_1414-V7.0.1.zip -d /opt/TOS_ESB && \
-	rm /opt/TOS_ESB-20180411_1414-V7.0.1.zip && \
+RUN unzip /opt/TOS_ESB-20181026_1147-V7.1.1.zip -d /opt/TOS_ESB && \
+	rm /opt/TOS_ESB-20181026_1147-V7.1.1.zip && \
 	rm -rf /opt/TOS_ESB/Studio && \	
 	chmod 777 /opt/TOS_ESB/Runtime_ESBSE/container/bin/trun && \
  	chmod 777 /opt/TOS_ESB/Runtime_ESBSE/container/bin/start
