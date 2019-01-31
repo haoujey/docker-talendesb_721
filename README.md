@@ -2,4 +2,4 @@
 
 ## Introduction
 
-Container for running Talend Open Studio for ESB 7.1.1
+Container for running Talend Open Studio for ESB 7.1.1 (Karaf)
