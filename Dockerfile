@@ -17,7 +17,7 @@ RUN apt-get -y update && \
 
 RUN apt-add-repository -y ppa:linuxuprising/java && \
 	apt-get -y update && \
-	yes | apt-get install -y oracle-java11-installer
+	yes | apt-get install -y oracle-java11-installer-local
 
 ENV JAVA_HOME /usr/lib/jvm/java-11-oracle
 
