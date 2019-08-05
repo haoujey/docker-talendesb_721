@@ -15,6 +15,8 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 # Download Talend Open Studio for ESB
 RUN curl -sSo /opt/TOS_ESB-20190620_1446-V7.2.1.zip https://download-mirror2.talend.com/esb/release/V7.2.1/TOS_ESB-20190620_1446-V7.2.1.zip > /dev/null
 
+# Clean old install
+RUN rm -rf /opt/TOS_ESB
 # Install Talend Open Studio for ESB
 
 RUN unzip /opt/TOS_ESB-20190620_1446-V7.2.1.zip -d /opt/TOS_ESB && \
