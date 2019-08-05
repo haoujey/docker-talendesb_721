@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 USER root
 
@@ -13,17 +13,17 @@ RUN apt-get -y update && \
 # Java installation
 RUN apt-add-repository -y ppa:webupd8team/java && \
 	apt-get -y update && \
-	yes | apt-get install -y --force-yes oracle-java8-installer
+	yes | apt-get install -y --force-yes oracle-java11-installer
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ENV JAVA_HOME /usr/lib/jvm/java-11-oracle
 
 # Download Talend Open Studio for ESB
-RUN curl -sSo /opt/TOS_ESB-20181026_1147-V7.1.1.zip https://download-mirror2.talend.com/esb/release/V7.1.1/TOS_ESB-20181026_1147-V7.1.1.zip > /dev/null
+RUN curl -sSo /opt/TOS_ESB-20190620_1446-V7.2.1.zip https://download-mirror2.talend.com/esb/release/V7.2.1/TOS_ESB-20190620_1446-V7.2.1.zip > /dev/null
 
 # Install Talend Open Studio for ESB
 
-RUN unzip /opt/TOS_ESB-20181026_1147-V7.1.1.zip -d /opt/TOS_ESB && \
-	rm /opt/TOS_ESB-20181026_1147-V7.1.1.zip && \
+RUN unzip /opt/TOS_ESB-20190620_1446-V7.2.1.zip -d /opt/TOS_ESB && \
+	rm /opt/TOS_ESB-20190620_1446-V7.2.1.zip && \
 	rm -rf /opt/TOS_ESB/Studio && \	
 	chmod 777 /opt/TOS_ESB/Runtime_ESBSE/container/bin/trun && \
  	chmod 777 /opt/TOS_ESB/Runtime_ESBSE/container/bin/start
