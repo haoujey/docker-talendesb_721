@@ -11,13 +11,20 @@ RUN apt-get -y update && \
                 curl
 
 # Java installation
-RUN apt-add-repository -y ppa:linuxuprising/java && \
-	apt-get -y update && \
-	yes | apt-get install -y oracle-java8-installer
+#RUN apt-add-repository -y ppa:linuxuprising/java && \
+#	apt-get -y update && \
+#	yes | apt-get install -y oracle-java8-installer
 
 #RUN apt-add-repository -y ppa:linuxuprising/java && \
 #	apt-get -y update && \
 #	yes | apt-get install -y oracle-java11-installer-local
+
+RUN apt-get install wget java-common gnupg2 -y
+RUN echo "oracle-java11-installer shared/accepted-oracle-license-v1-2 select true" | debconf-set-selections
+RUN echo "deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/linuxuprising-java.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 73C3DB2A
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends oracle-java11-installer && apt-get clean all
+
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
