@@ -11,7 +11,7 @@ RUN apt-get -y update && \
                 curl
 
 # Java installation
-RUN apt-add-repository -y ppa:webupd8team/java && \
+RUN apt-add-repository -y ppa:linuxuprising/java && \
 	apt-get -y update && \
 	yes | apt-get install -y oracle-java8-installer
 
