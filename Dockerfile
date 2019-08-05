@@ -11,15 +11,15 @@ RUN apt-get -y update && \
                 curl
 
 # Java installation
-#RUN apt-add-repository -y ppa:webupd8team/java && \
-#	apt-get -y update && \
-#	yes | apt-get install -y --force-yes oracle-java11-installer
-
-RUN apt-add-repository -y ppa:linuxuprising/java && \
+RUN apt-add-repository -y ppa:webupd8team/java && \
 	apt-get -y update && \
-	yes | apt-get install -y oracle-java11-installer-local
+	yes | apt-get install -y --force-yes oracle-java8-installer
 
-ENV JAVA_HOME /usr/lib/jvm/java-11-oracle
+#RUN apt-add-repository -y ppa:linuxuprising/java && \
+#	apt-get -y update && \
+#	yes | apt-get install -y oracle-java11-installer-local
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Download Talend Open Studio for ESB
 RUN curl -sSo /opt/TOS_ESB-20190620_1446-V7.2.1.zip https://download-mirror2.talend.com/esb/release/V7.2.1/TOS_ESB-20190620_1446-V7.2.1.zip > /dev/null
