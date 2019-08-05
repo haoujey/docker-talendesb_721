@@ -14,20 +14,22 @@ RUN apt-get -y update && \
                 curl \
 		openssl \
 		wget \
-		gnupg2
+		gnupg2 \
+		openjdk-11-jre \
+		openjdk-11-jdk
 
 # install JDK
-RUN echo "deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/linuxuprising-java.list
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 73C3DB2A
-RUN apt-get update
-RUN echo oracle-java11-installer shared/accepted-oracle-license-v1-2 select true | /usr/bin/debconf-set-selections
-RUN apt -y install oracle-java11-set-default
-RUN java -version
+#RUN echo "deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/linuxuprising-java.list
+#RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 73C3DB2A
+#RUN apt-get update
+#RUN echo oracle-java11-installer shared/accepted-oracle-license-v1-2 select true | /usr/bin/debconf-set-selections
+#RUN apt -y install oracle-java11-set-default
+#RUN java -version
 
 # remove download archive files
 RUN apt-get clean
 
-ENV JAVA_HOME /usr/lib/jvm/java-11-oracle
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
 
 # Download Talend Open Studio for ESB
 RUN curl -sSo /opt/TOS_ESB-20190620_1446-V7.2.1.zip https://download-mirror2.talend.com/esb/release/V7.2.1/TOS_ESB-20190620_1446-V7.2.1.zip > /dev/null
