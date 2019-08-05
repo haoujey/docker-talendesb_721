@@ -1,4 +1,4 @@
-haoujey/docker-talendesb_711
+FROM haoujey/docker-talendesb_711
 
 USER root
 
@@ -8,7 +8,8 @@ RUN apt-get -y update && \
 		software-properties-common unzip \
                 ca-certificates \
                 openssh-client \
-                curl
+                curl \
+		openssl 
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
