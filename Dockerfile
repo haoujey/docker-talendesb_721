@@ -5,9 +5,6 @@ USER root
 # this is a non-interactive automated build - avoid some warning messages
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
-RUN apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
-
 RUN apt-get -y update && \
 	apt-get -y upgrade && \
 	apt-get install -y \
@@ -18,8 +15,11 @@ RUN apt-get -y update && \
 		openssl \
 		wget \
 		gnupg2 \
-		nano \
-		zulu-11-azure-jdk
+		nano 
+		
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+RUN apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
+RUN apt-get -y install zulu-11-azure-jdk
 
 	#	openjdk-11-jre \
 	#	openjdk-11-jdk
