@@ -5,6 +5,9 @@ USER root
 # this is a non-interactive automated build - avoid some warning messages
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+RUN apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
+
 RUN apt-get -y update && \
 	apt-get -y upgrade && \
 	apt-get install -y \
@@ -15,8 +18,12 @@ RUN apt-get -y update && \
 		openssl \
 		wget \
 		gnupg2 \
-		openjdk-11-jre \
-		openjdk-11-jdk
+		
+RUN apt-get -q update
+RUN apt-get -y install zulu-11-azure-jdk
+
+	#	openjdk-11-jre \
+	#	openjdk-11-jdk
 
 # install JDK
 #RUN echo "deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/linuxuprising-java.list
@@ -29,7 +36,7 @@ RUN apt-get -y update && \
 # remove download archive files
 RUN apt-get clean
 
-ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
+ENV JAVA_HOME /usr/lib/jvm/zulu-11-azure-amd64/
 
 # Download Talend Open Studio for ESB
 RUN curl -sSo /opt/TOS_ESB-20190620_1446-V7.2.1.zip https://download-mirror2.talend.com/esb/release/V7.2.1/TOS_ESB-20190620_1446-V7.2.1.zip > /dev/null
