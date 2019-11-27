@@ -18,9 +18,8 @@ RUN apt-get -y update && \
 		openssl \
 		wget \
 		gnupg2 \
-		
-RUN apt-get -q update
-RUN apt-get -y install zulu-11-azure-jdk
+		nano \
+		zulu-11-azure-jdk
 
 	#	openjdk-11-jre \
 	#	openjdk-11-jdk
